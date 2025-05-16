@@ -13,8 +13,19 @@
  */
 function countdownTimer(startTime, interval) {
   // Initialize the remaining time
+  let timeLeft = startTime;
   // Set up a timer using setInterval
-  // Log the remaining time and decrement it
-  // Stop the timer when time reaches 0
+  const timerTemp = setInterval(() => {
+    console.log(timeLeft);
+    timeLeft -= interval / 1000;
+    if (timeLeft <= 0) {
+      // Stop the timer when time reaches 0
+      clearInterval(timerId);
+    }
+  }, interval);
   // Return the timer ID for validation
+  const timerId = timerTemp[Symbol.toPrimitive]();
+  return timerId;
 }
+
+module.exports = { countdownTimer };
